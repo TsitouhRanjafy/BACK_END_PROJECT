@@ -1,0 +1,19 @@
+{
+  "name": "full-stack",
+  "version": "1.0.0",
+  "description": "application node, express,monogDB avec openclassroom ",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx tsc & node ./out/main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "tsc": "^2.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "typescript": "^5.4.5"
+  }
+}
