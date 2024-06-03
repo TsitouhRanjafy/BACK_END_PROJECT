@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENREGISTREMENT</title>
+    <script defer>
+        let updateNiveauVal = (val,id) =>{
+            document.getElementById(id).textContent = val;
+        }
+        let resetNiveauVal = (id) =>{
+            document.getElementById(id).textContent = '0'
+        }
+    </script>
+</head>
+<body>
+    <h1>ENREGISTREMENT</h1>
+    <ul>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/enregistrement">Enregistrement</a></li>
+        <li><a href="/affichage.html">Affichage</a></li>
+    </ul>
+    <form action="/enregistrement/addUtilisateur" method="post">
+        <input type="text" name="nom" id="nom" placeholder="NOM"/>
+        <input type="number" name="age"  id="age" placeholder="AGE" inputmode="numeric"/>
+        <div>
+            <label for="genre">GENRE</label>
+            <input type="radio" name="genre" id="" value="HOMME"/>HOMME
+            <input type="radio" name="genre" id="" value="FEMMME"/>FEMME
+        </div>
+        <div>
+            <label for="niveau">NIVEAU</label>
+            <input type="range" name="niveau" id="niveau" min="0" max="10" value="0" oninput="updateNiveauVal(this.value,'niveauVal')" /> 
+            <p id="niveauVal" >0</p>
+        </div>
+        <input type="submit" name="" value="Enregistrer"/>
+        <input type="reset" value="Effacer" onclick="resetNiveauVal('niveauVal');"/>
+    </form>
+</body>
+</html>

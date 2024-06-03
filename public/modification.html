@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MODIFICATION</title>
+    <script defer>
+        let updateNiveauVal = (val,id) =>{
+            document.getElementById(id).textContent = val;
+        }
+        let resetNiveauVal = (id) =>{
+            document.getElementById(id).textContent = '0'
+        }
+
+        // ****
+        fetch('/modification/')
+        .then((rep) => rep.json())
+        .then((aModifier) => {
+            console.log(aModifier)
+            document.getElementById('nom').value = aModifier[0].nom
+            document.getElementById('age').value = aModifier[0].age
+            // if (aModifier[0].genre == "HOMME") document.getElementById('homme')
+            document.getElementById('niveau').value = aModifier[0].niveau
+            document.getElementById('niveauVal').textContent = aModifier[0].niveau
+        })
+    </script>
+</head>
+<body>
+    <h1>MODIFICATION</h1>
+    <form action="/modification/html/enregistrer" method="post">
+        <input type="text" name="nom_apres" id="nom" placeholder="NOM"/>
+        <input type="number" name="age_apres"  id="age" placeholder="AGE" inputmode="numeric"/>
+        <div>
+            <label for="genre_apres">GENRE</label>
+            <input type="radio" name="genre_apres" id="homme" value="HOMME"/>HOMME
+            <input type="radio" name="genre_apres" id="" value="FEMMME"/>FEMME
+        </div>
+        <div>
+            <label for="niveau_apres">NIVEAU</label>
+            <input type="range" name="niveau_apres" id="niveau" min="0" max="10" value="0" oninput="updateNiveauVal(this.value,'niveauVal')" />
+            <p id="niveauVal" >0</p>
+        </div>
+        <input type="submit" name="" value="Modifier"/>
+        <input type="reset" value="Effacer" onclick="resetNiveauVal('niveauVal');"/>
+
+    </form>
+</body>
+</html>

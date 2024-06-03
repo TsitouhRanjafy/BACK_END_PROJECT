@@ -1,0 +1,96 @@
+*****
+npm init
+npm i --save-dev typescript @types/node
+npx tsc --init
+    config (outDir)
+    config (es2021)
+    config (include)
+npm i express
+npm i mongoose
+npm i --save-dev @types/mongoose
+npm i --save-dev @types/express
+
+******
+fetch("https://www.une-url.com") // URL de resource à récuperer,fetch() retourne une promesse contenant la réponse si tout se passe bien 
+.then(response => response.json()) // il faut indiquer le format de réponse souhaité pour qu'on peut exploiter la réponse de cette promesse (voir exemple format )
+.then(response => alert(JSON.stringfy(response))) // pour transformer notre objet JSON en une chaine JSON
+.catch(error => alert("Erreur :"+ error)) // bloc catch pour traiter les erreurs si on a une
+
+les format qu'on peut utiliser pour la méthode de l'interface Response
+        - text() // retourne la response sous forme de chaine de caractère
+        - json() // retourne la réponse en tant qu'objet JSON
+        - formatData() // retourne la réponse en tant qu'objet formatData
+        - arrayBuffer() // retourne la réponse en tant qu'objet arrayBuffer
+        - blob() // retourne la réponse en tant qu'objet Blob
+
+******
+let promise = fetch(url,{
+    method : "GET", //ou POST, PUT, DELETE,etc
+    headers : {
+        "Content-type" : "text/plain;charset=UTF-8" // pour un coprs de type chaine
+    },
+    body : undefined, // ou string, FormData, Blob, BufferSource, ou URLSearchParams
+    referrer : "about:client", // ou "" (pas de réferance) ou une url de l'origine 
+    referrerPolicy : "no-referrer-when-downgrade", // ou no-referrer, origin, same-origin...
+    mode : "coprs", // ou same-origin, no-coprs
+    credentials : "same-origin", // ou omit, include
+    cache : "default", // ou no-store, reload, no-cache, force-cache, ou only-if-cached
+    redirect : "follow", // ou manual ou error 
+    integrity : "",// ou un hash comme "sha256-abcdef1234567890"
+    keepalive : false, // ou true pour que la requête survive à la page
+    signal : undefined // ou AbortController pour annuler la requête
+});
+
+Deuxiéme argument qui va nous permettre de definir les options de notre requ^éte
+        - method : méthode utiliser par la réquête : GET (default),POST,...
+        - headers : les en-tête qu'on souhaite ajouter à notre requête
+        - body : un coprs qu'on souhaite ajouter à notre requête
+        - referrer : un réferant : "about:client" (default), "" (pour une absence de réferent ou URL)
+        - referrerPolicy : spécifie la valeur de l'en-tête HTTP du réferant
+        - mode : spécifie le mode qu'on souhaite utiliser pour le requête : cors (default), no-cors, same-origin
+        - credentials : les informations d'indentification qu'on souhaite utiliser pour la demande : same-origin (default), omit, include
+        - cache : le mode de cache : default (default), no-store, reload, no-cache , force-cache only-if-cached
+        - redirect : le mode de redirection : follow (default),manual, error
+        - integrity : la valeur d'integrité de la sous-ressource de la demande : "" (default), hash
+        - keepalive : permet à un requête de survivre à la page : false (default), true
+        - signal : une instance d'un objet AbortSignal qui nous permet de communiquer avec une requête fetch() et de l'abandonner
+******
+
+
+******
+
+mongosh cmd{
+1_Opérateurs de comparaison : 
+  - $eq : égal à (ex : db.collection.find({age : {$eq : 30}}))
+  - $ne : Different de
+  - $gt : Supperieur à (greater than )
+  - $lt : Inférieur à (less than)
+  - $gte : Supperieur ou égal à  (greater than or equal)
+  - $lte : Inférieur ou égal à  (less than or equal)
+  - $in : Inclus dans un ensemble (ex : db.collection.find({$in : [25,30,35]}))
+  - $nin : Non Inclus dans un ensemble (ex : db.collection.find({$nin : [45,3]}))
+2_Opérateurs Logiques
+  - $and : db.collection.find({$and : [{age : {$gt : 34}},{city : 'Antananarivo}] })
+  - $or : db.collection.find({$or : [{age : {$gt : 34}},{city : 'Antananarivo}] })
+  - $not : db.collection.find({$or : [{age : {$gt : 34}}] })
+
+  db.collection.find({$or : [
+    {
+        $and : [
+            {age : {$lt : 0,$gte : 26}},
+            {city : {$ne : 'Antananarivo'}}
+            ]
+    },
+    {
+        $and : [
+            {age : {$lt : 26, $gt : 50}},
+            {city : {$gt : 'Antananarivo'}}
+            ]
+    }]
+    })
+
+3_Opérateurs d'évaluation 
+  - $regex : Recherche avec une expression régulière (ex : db.collection.fint({nom : {$regex : /^J/ } }))
+}
+
+******
