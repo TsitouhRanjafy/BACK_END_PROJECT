@@ -7,5 +7,6 @@ Le branch main ne contient que du README.md :
 ```code  
 npm start
 ```
+Serveur de la base de donnée *mongodb://localhost:27017/crud*
                                                                                                                                                                                   
   
