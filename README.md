@@ -1,11 +1,11 @@
 # BACK_END_PROJECT
 Le branch main ne contient que du README.md :
 * Le branch crud contient un projet d'application CRUD (Create Read Update Delete)
- ## Exécuter l'application Crud
+ ## Lancer le serveur
  *.../BACK_END_PROJECT (crud)*
 
 ```code
-npm install express
+npm install 
 ```
 ```code
 npm start
